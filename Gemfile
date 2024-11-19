@@ -27,6 +27,10 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "devise"
 
+gem "devise"
+
+gem "faker"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -73,3 +77,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem 'ostruct'
