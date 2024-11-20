@@ -27,5 +27,11 @@ puts 'creating books'
               condition: ['poor', 'used', 'damaged', 'good', 'very good', 'brand new'].sample, user: User.all.sample)
 end
 
+puts 'create reviews'
+40.times do
+  Review.create(user: User.all.sample, book: Book.all.sample, content: Faker::Lorem.paragraph(sentence_count: 3) )
+end
+
 p "created #{Book.count} Books"
 p "created #{User.count} Users"
+p "created #{Review.count} Reviews"

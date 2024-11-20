@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "style", to: "pages#style"
-  resource :books, only: %i[index show create new]
+  resources :books, only: %i[index show create new]
 end
