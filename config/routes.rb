@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "style", to: "pages#style"
+  get "dashboard", to: "pages#dashboard"
   resources :books, only: %i[index show create new]
+  get 'profile', to: 'users#show', as: 'profile'
 end

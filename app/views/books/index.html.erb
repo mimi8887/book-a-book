@@ -4,7 +4,7 @@
     <h2><%= link_to book.title, book_path(book) %></h2>
     <p><strong>Author:</strong> <%= book.author %></p>
     <p><strong>Description:</strong> <%= book.description %></p>
-    <p><%= link_to "#{book.user.first_name} #{book.user.last_name}",  books_path %></p>
+    <p><%= "#{book.user.first_name} #{book.user.last_name}" %></p>
     <p><%= link_to "Request a book", "" %></p>
   </div>
 <% end %>
