@@ -1,22 +1,21 @@
-
+<div class="mx-5">
+<%= link_to 'Back to List', root_path%>
 <% if @user == current_user %>
-<h1>Hello <%= @user.first_name %></h1>
   <h2>My profile</h2>
   <p><%= @user.first_name %> <%= @user.last_name %></p>
 
   <h2>My offers</h2>
     <% @user.books.each do |book| %>
     <ul>
-    <li><%= book.title %>
+    <li><%= link_to book.title, book_path(book) %>
     <p><%= book.author %></p></li>
     </ul>
     <% end %>
   <h2>My requests</h2>
   <% @user.bookings.each do |booking| %>
-  <ul><li><%= booking.book.title %>
-    <p><%= booking.book.author %></p></li>
+  <ul><li><%= link_to booking.book.title, book_path(booking.book) %>
+         <p><%= booking.book.author %></p></li>
   </ul>
-
   <% end %>
 
 <% else %>
@@ -34,4 +33,4 @@
   <% end %>
 
 <% end %>
-<%= link_to 'Back to List', root_path%>
+</div>

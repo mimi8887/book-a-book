@@ -10,15 +10,15 @@
 
 require 'faker'
 puts 'destroy all records'
-Book.destroy_all
 Booking.destroy_all
 Review.destroy_all
+Book.destroy_all
 User.destroy_all
 
 puts 'create users'
 10.times do
     User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email,
-                password: Faker::Internet.password)
+                password: "123456")
 end
 
 puts 'creating books'
