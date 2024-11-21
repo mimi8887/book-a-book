@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
   get "style", to: "pages#style"
   get "dashboard", to: "pages#dashboard"
-  resources :books, only: %i[index show create new]
+  resources :books, only: %i[index show create new] do
+    resources :reviews, only: %i[new create]
+  end
   get 'profile', to: 'users#show', as: 'profile'
+  get 'reviews', to: 'reviews#new'
 end

@@ -10,6 +10,8 @@
   <%= link_to 'Back to List', books_path%>
   <p><%= link_to "Request a book", "" %></p>
 
+<h4><%= link_to  "Add a review to the book" %>
+
 <h3>Reviews:</h3>
 <% @book.reviews.each do |review|%>
 <ul><li>

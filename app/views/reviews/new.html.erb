@@ -1,0 +1,11 @@
+<h1>Add a new review </h1>
+<%= form_with(model: [@book, @review], local: true) do |form| %>
+  <% if @review.errors.any? %>
+
+      <h2><%= pluralize(@review.errors.count, "erro") %> </h2>
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
