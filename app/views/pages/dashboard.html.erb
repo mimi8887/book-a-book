@@ -1,0 +1,37 @@
+
+<% if @user == current_user %>
+<h1>Hello <%= @user.first_name %></h1>
+  <h2>My profile</h2>
+  <p><%= @user.first_name %> <%= @user.last_name %></p>
+
+  <h2>My offers</h2>
+    <% @user.books.each do |book| %>
+    <ul>
+    <li><%= book.title %>
+    <p><%= book.author %></p></li>
+    </ul>
+    <% end %>
+  <h2>My requests</h2>
+  <% @user.bookings.each do |booking| %>
+  <ul><li><%= booking.book.title %>
+    <p><%= booking.book.author %></p></li>
+  </ul>
+
+  <% end %>
+
+<% else %>
+
+<h2><%= @user.first_name %>'s profile</h2>
+<p><%= @user.first_name %> <%= @user.last_name %></p>
+
+  <h2><%= @user.first_name %>'s offers</h2>
+    <% @user.books.each do |book| %>
+    <ul>
+    <li><%= book.title %></li>
+    <p><%= book.condition %></p>
+    <p><%= link_to "Request this book", new_book_booking_path(book) %></p>
+    </ul>
+  <% end %>
+
+<% end %>
+<%= link_to 'Back to List', root_path%>
