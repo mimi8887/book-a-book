@@ -1,0 +1,8 @@
+<h1>Add a new review </h1>
+ <%= simple_form_for [@book, @review] do |f| %>
+ <%= f.input :content, placeholder: "Enter your review here", as: :text, input_html: { rows: "10" } %>
+
+     <%= f.submit class: "btn btn-flat" %>
+  <% end %>
+
+<%= link_to 'Back to List', root_path%>
