@@ -5,6 +5,7 @@
     <p><strong>Author:</strong> <%= book.author %></p>
     <p><strong>Description:</strong> <%= book.description %></p>
     <p><%= link_to "#{book.user.first_name} #{book.user.last_name}",  books_path %></p>
-    <p><%= link_to "Request a book", "" %></p>
+    <p><%= link_to "Request this book", new_book_booking_path(book) %></p>
+
   </div>
 <% end %>

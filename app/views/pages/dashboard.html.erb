@@ -1,0 +1,27 @@
+<h1>My Profile</h1>
+
+<div class="profile-container">
+
+  <div class="profile-info">
+  <img src=""  alt="">
+
+    <p><strong>Name:</strong> <%= @user.first_name %> <%= @user.last_name %></p>
+    <p><strong>Berlin</strong>
+  </div>
+
+    <h3>My Books</h3>
+    <% if @books.any? %>
+      <ul>
+        <% @books.each do |book| %>
+          <li><%= link_to  book.title %> by <%= book.author %></li>
+        <% end %>
+      </ul>
+    <% else %>
+    <% end %>
+  </div>
+
+  <h3>My Offers</h3>
+  <% @bookings_as_booker.each do |booking| %>
+    <%= booking %>
+  <% end %>
+  </div>
