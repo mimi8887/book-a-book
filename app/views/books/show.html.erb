@@ -11,10 +11,10 @@
   <p><%= link_to "Request this book", new_book_booking_path(@book) %></p>
 
 
-<h4><%= link_to  "Add a review to the book" %>
+<h4><%= link_to  "Add a review to the book", new_book_review_path(@book) %>
 
 <h3>Reviews:</h3>
-<% @book.reviews.each do |review|%>
+<% @book.reviews.order(created_at: :desc).each do |review|%>
 <ul><li>
   <%= review.content %>
   <%= link_to  review.user.first_name, "" %>
