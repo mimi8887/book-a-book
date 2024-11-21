@@ -3,10 +3,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
+  height: 80px;
   padding: 0px 50px;
-  color: #1C1C1C;
-
+  color: #E0A85E;
+  position: relative;
+  bottom:0%;
+  width: 100%;
 }
 .footer-links {
   display: flex;
