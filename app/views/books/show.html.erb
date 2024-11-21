@@ -15,6 +15,6 @@
 <% @book.reviews.order(created_at: :desc).each do |review|%>
 <ul><li>
   <%= review.content %>
-  <%= link_to review.user.first_name, user_dashboard_path(review.user) %>
+  <%= link_to  review.user.first_name, user_dashboard_path(review.user) %>
 </li></ul>
 <% end %>

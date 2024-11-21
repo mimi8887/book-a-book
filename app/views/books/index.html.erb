@@ -1,7 +1,7 @@
 <div class="m-5">
 <h1>Welcome!</h1>
   <% @books.each do |book| %>
-    <img src="" >
+    <%= cl_image_tag book.photo.key, height: 300, crop: :fill %>
     <h2><%= link_to book.title, book_path(book) %></h2>
     <p><strong>Author:</strong> <%= book.author %></p>
     <p><strong>Description:</strong> <%= book.description %></p>

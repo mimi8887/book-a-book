@@ -8,6 +8,7 @@
     <%= f.input :description, placeholder: 'description' %>
     <%= f.input :condition, collection: ['Poor', 'Used', 'Good', 'Brand New'],
      prompt: 'Select condition', input_html: { class: 'form-control' } %>
+     <%= f.input :photo, as: :file %>
     <%= f.submit class: 'btn btn-primary' %>
 <% end %>
 </div>

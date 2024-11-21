@@ -9,6 +9,7 @@
 #   end
 
 require 'faker'
+require 'open-uri'
 puts 'destroy all records'
 Booking.destroy_all
 Review.destroy_all
@@ -27,9 +28,18 @@ puts 'creating books'
               condition: ['poor', 'used', 'damaged', 'good', 'very good', 'brand new'].sample, user: User.all.sample)
 end
 
+book_image_urls = ["https://res.cloudinary.com/dlmjemn37/image/upload/v1732206543/matthew-hamilton-SHMp_d0-SZg-unsplash_u6laao.jpg",
+                    "https://res.cloudinary.com/dlmjemn37/image/upload/v1732206543/thought-catalog-B1dQCWz0U2w-unsplash_ygg84e.jpg",
+                    "https://res.cloudinary.com/dlmjemn37/image/upload/v1732206542/lewis-pC_kzUrdxoY-unsplash_iixlth.jpg"]
+
+Book.all.each do |book|
+  image_file = URI.open(book_image_urls.sample)
+  book.photo.attach(io: image_file, filename: "#{book.title}.jpg", content_type: "image/jpg")
+end
+
 puts 'create reviews'
 40.times do
-  Review.create(user: User.all.sample, book: Book.all.sample, content: Faker::Lorem.paragraph(sentence_count: 3) )
+  Review.create(user: User.all.sample, book: Book.all.sample, content: Faker::Lorem.paragraph(sentence_count: 3))
 end
 
 p "created #{Book.count} Books"
