@@ -1,18 +1,17 @@
 <h1>Book Details</h1>
-  <img src="" >
+  <img src=""  alt="">
   <h2><%= @book.title %></h2>
   <p><strong>Description:</strong> <%= @book.description %></p>
   <p><strong>Author:</strong> <%= @book.author %></p>
-
-  <% if @book.published_at.present? %>
-    <p><strong>Published on:</strong> <%= @book.published_at.strftime("%B %d, %Y") %></p>
-  <% end %>
   <%= link_to 'Back to List', root_path%>
   <p><%= link_to "Request this book", new_book_booking_path(@book) %></p>
 
 
+<h4><%= link_to  "Add a review to the book", new_book_review_path(@book) %>
+
 <h3>Reviews:</h3>
-<% @book.reviews.each do |review|%>
+
+<% @book.reviews.order(created_at: :desc).each do |review|%>
 <ul><li>
   <%= review.content %>
   <%= link_to  review.user.first_name, "" %>
