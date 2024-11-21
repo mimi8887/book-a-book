@@ -20,6 +20,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_20_144727) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.string "renting_period"
+    t.string "preferred_pickup_location"
     t.index ["book_id"], name: "index_bookings_on_book_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end

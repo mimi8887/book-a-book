@@ -1,5 +1,5 @@
-<h1>Add a new review </h1>
-<%= simple_form_for : [@book, @review] do |form| %>
+<h1>Book <%= @book.title %></h1>
+ <%= simple_form_for [@book, @booking] do |f| %>
  <%= f.input :preferred_pickup_location, placeholder: "Enter a prefered pick up location" %>
  <%= f.input :renting_period, collection: ['2 weeks', '3 weeks', '4 weeks', '5 weeks'],
      prompt: 'Select condition', input_html: { class: 'form-control' } %>
