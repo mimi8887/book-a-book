@@ -9,11 +9,12 @@
     <p><strong>Berlin</strong>
   </div>
 
-    <h3>My Books</h3>
+    <h3>Request</h3>
+    <h4>book</h4>
     <% if @books.any? %>
       <ul>
         <% @books.each do |book| %>
-          <li><%= link_to  book.title %> by <%= book.author %></li>
+          <li><%= link_to  book.title %> by <%= book.author %><h3>Status</h3></li>
         <% end %>
       </ul>
     <% else %>

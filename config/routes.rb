@@ -12,9 +12,11 @@ Rails.application.routes.draw do
 
   get "style", to: "pages#style"
   get "dashboard", to: "pages#dashboard"
+
   get 'profile', to: 'users#show', as: 'profile'
-  
+
   resources :books, only: %i[index show create new] do
     resources :bookings, only: %i[create new]
+    resources :reviews, only: %i[new create]
   end
 end
