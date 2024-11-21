@@ -1,11 +1,13 @@
+<div class="m-5">
 <h1>Welcome!</h1>
   <% @books.each do |book| %>
     <img src="" >
     <h2><%= link_to book.title, book_path(book) %></h2>
     <p><strong>Author:</strong> <%= book.author %></p>
     <p><strong>Description:</strong> <%= book.description %></p>
-    <p><%= link_to "#{book.user.first_name} #{book.user.last_name}",  books_path %></p>
+    <p><%= link_to "#{book.user.first_name} #{book.user.last_name}", user_dashboard_path(book.user) %></p>
     <p><%= link_to "Request this book", new_book_booking_path(book) %></p>
-
-  </div>
 <% end %>
+</div>
+  </div>
+  </div>
