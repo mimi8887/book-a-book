@@ -8,9 +8,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @reviews = @book.reviews
-    #@books = @user.books
   end
-
 
   def new
     @book = Book.new
@@ -18,16 +16,17 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    @book.user = current_user
     if @book.save
-      redirect_to book_path(@book)
+      redirect_to book_path(@book), notice: 'Booking created successfully!'
     else
-      render :new, status: :unprocessable_entity, notice: 'Booking created successfully!'
+      render :new, status: :unprocessable_entity
     end
   end
 
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :description, :condition)
+    params.require(:book).permit(:title, :author, :description, :condition, :user_id)
   end
 end

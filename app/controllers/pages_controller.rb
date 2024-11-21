@@ -1,15 +1,16 @@
 class PagesController < ApplicationController
   def home
   end
-  
-  def style
-  end
 
   def dashboard
-    @user = current_user
-    #@books = Book.where(user: @user)
-    @books = @user.books
-    @bookings_as_booker = @user.bookings
-    #@bookings_as_owner = Booking.where(book.user_id: @user)
+    @books = Book.all
+      if params[:id].present?
+        @user = User.find(params[:id]) # Find the user by ID
+      else
+        @user = current_user # Default to current_user
+      end
+  end
+
+  def style
   end
 end

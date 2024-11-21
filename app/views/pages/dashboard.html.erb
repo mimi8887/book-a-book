@@ -1,27 +1,38 @@
-<h1>My Profile</h1>
+<div class="mx-5">
+<%= link_to 'Back to List', root_path%>
+<% if @user == current_user %>
+  <h2>My profile</h2>
+  <p><%= @user.first_name %> <%= @user.last_name %></p>
 
-<div class="profile-container">
 
-  <div class="profile-info">
-  <img src=""  alt="">
+  <h2>My offers</h2>
+    <% @user.books.each do |book| %>
+    <ul>
+    <li><%= link_to book.title, book_path(book) %>
+    <p><%= book.author %></p></li>
+    </ul>
 
-    <p><strong>Name:</strong> <%= @user.first_name %> <%= @user.last_name %></p>
-    <p><strong>Berlin</strong>
-  </div>
-
-    <h3>My Books</h3>
-    <% if @books.any? %>
-      <ul>
-        <% @books.each do |book| %>
-          <li><%= link_to  book.title %> by <%= book.author %></li>
-        <% end %>
-      </ul>
-    <% else %>
     <% end %>
-  </div>
-
-  <h3>My Offers</h3>
-  <% @bookings_as_booker.each do |booking| %>
-    <%= booking %>
+  <h2>My requests</h2>
+  <% @user.bookings.each do |booking| %>
+  <ul><li><%= link_to booking.book.title, book_path(booking.book) %>
+         <p><%= booking.book.author %></p></li>
+  </ul>
   <% end %>
-  </div>
+
+<% else %>
+
+<h2><%= @user.first_name %>'s profile</h2>
+<p><%= @user.first_name %> <%= @user.last_name %></p>
+
+  <h2><%= @user.first_name %>'s offers</h2>
+    <% @user.books.each do |book| %>
+    <ul>
+    <li><%= book.title %></li>
+    <p><%= book.condition %></p>
+    <p><%= link_to "Request this book", new_book_booking_path(book) %></p>
+    </ul>
+  <% end %>
+
+<% end %>
+</div>

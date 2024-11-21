@@ -66,7 +66,42 @@
   border-radius: 8px;
   flex-direction: column;
   padding: 16px;
-  justify-content: space-between;
-  margin-top: 32PX;
-  width: 600px;
+  width: 500px;
 }
+
+.card-product_book_content a{
+  width: 100%;
+}
+
+.card-product_book_content {
+  width: 100%;
+}
+
+.card-review {
+  overflow: hidden;
+  background: #F8F8F2;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items:start;
+  border-radius: 8px;
+  flex-direction: column;
+  padding: 16px;
+  margin-top: 16PX;
+  display:inline-block;
+
+}
+
+.book-detail {
+  gap: 32px;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto;
+  margin-top: 24px;
+ }
+
+ .reviews {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 24px;
+ }
