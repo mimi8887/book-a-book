@@ -6,13 +6,12 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking.status = "available"
     @booking = Booking.new(booking_params)
     @booking.book = @book
     @booking.user = current_user
     if @booking.save
       redirect_to book_path(@book), notice: 'Booking created successfully!'
-      @booking.status = "booked"
+      @book.update(status: "booked") 
     else
       render :new, status: :unprocessable_entity
     end

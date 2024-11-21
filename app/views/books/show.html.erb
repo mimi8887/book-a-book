@@ -4,7 +4,8 @@
   <p><strong>Description:</strong> <%= @book.description %></p>
   <p><strong>Author:</strong> <%= @book.author %></p>
   <%= link_to 'Back to List', root_path%>
-  <p><%= link_to "Request this book", new_book_booking_path(@book) %></p>
+
+  <p><%= @book.status %> <%= link_to "Request this book", new_book_booking_path(@book) if @book.status == "available" %></p>
 
 
 <h4><%= link_to  "Add a review to the book", new_book_review_path(@book) %>
@@ -14,6 +15,6 @@
 <% @book.reviews.order(created_at: :desc).each do |review|%>
 <ul><li>
   <%= review.content %>
-  <%= link_to  review.user.first_name, "" %>
+  <%= link_to review.user.first_name, user_dashboard_path(review.user) %>
 </li></ul>
 <% end %>

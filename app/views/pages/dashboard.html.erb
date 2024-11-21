@@ -9,7 +9,8 @@
     <% @user.books.each do |book| %>
     <ul>
     <li><%= link_to book.title, book_path(book) %>
-    <p><%= book.author %></p></li>
+    <p><%= book.author %></p>
+    <%= book.status %></li>
     </ul>
 
     <% end %>
