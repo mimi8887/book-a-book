@@ -3,6 +3,9 @@ class BooksController < ApplicationController
     @books = Book.all
     @users = User.all
     @user = current_user
+    if params[:query].present?
+      @books = @books.where("title ILIKE ?", "%#{params[:query]}%")
+    end
   end
 
   def show
