@@ -1,6 +1,20 @@
 
 <div class="container">
   <h4>Welcome!</h4>
+
+<div class="container">
+  <%= form_with url: books_path, method: :get, class: "simple_form search" do %>
+    <div class="search-form-control form-group">
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control string required",
+            placeholder: "Type a keyword" %>
+      <%= submit_tag "Search", name: "", class: "btn btn-flat" %>
+    </div>
+  <% end %>
+</div>
+
+
   <div class="cards_container">
     <% @books.each do |book| %>
       <div class="card-product d-flex justify-content-between ">
