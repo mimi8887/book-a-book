@@ -10,8 +10,10 @@
         <ul>
         <li><%= link_to book.title, book_path(book) %>
         <p><%= book.author %></p></li>
+        <%= book.status %></li>
         </ul>
         <% end %>
+
 
       <h2>My requests</h2>
       <% @user.bookings.each do |booking| %>
@@ -19,6 +21,7 @@
             <p><%= booking.book.author %></p></li>
       </ul>
       <% end %>
+
 
     <% else %>
       <div>
@@ -29,13 +32,13 @@
         </div>
       </div>
       <h5><%= @user.first_name %>'s offers</h5>
-      <% @user.books.each do |book| %>
-        <div class="cards_container">
-          <div class="card-offers card-content">
-            <h6><%= book.title %></h6>
-            <p><strong>Conditions: </strong><%= book.condition %></p>
-            <p><%= link_to "Request this book", new_book_booking_path(book), class: "btn btn-flat"  %></p>
-          </div>
+      <div class="cards_container">
+        <% @user.books.each do |book| %>
+        <div class="card-offers card-content">
+          <h6><%= book.title %></h6>
+          <p><strong>Conditions: </strong><%= book.condition %></p>
+          <p><%= link_to "Request this book", new_book_booking_path(book), class: "btn btn-flat"  %></p>
+        </div>
       </div>
       <% end %>
     <% end %>

@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="my-3">
   <%= link_to 'Back to homepage', root_path%>
@@ -7,10 +8,14 @@
   <div class="book-detail">
     <div class="card-product_book">
       <div>
-        <%= image_tag "book1.png"%>
+        <%= cl_image_tag @book.photo.key, height: 300, width: 400, crop: :fill %>
       </div>
       <div class="card-product_book_content my-3">
+      <% if @book.status != "booked" %>
         <%= link_to "Request this book", new_book_booking_path(@book), class: "btn btn-flat" %>
+      <% else %>
+        <%= link_to "Request this book", "", class: "btn btn-flat" %>
+      <% end %>
       </div>
 
     </div>
@@ -29,7 +34,8 @@
         <div class="card-review d-flex">
            <p> <%= review.content %> </p>
             <div>
-              <%= render "shared/avatar" %>
+
+              <%= cl_image_tag review.user.photo.key, class: "avatar", crop: :fill %>
               <%= link_to  review.user.first_name, dashboard_path, data: {turbo_method: :get} %>
             </div>
           </div>
