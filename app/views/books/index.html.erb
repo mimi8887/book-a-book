@@ -5,7 +5,7 @@
     <% @books.each do |book| %>
       <div class="card-product d-flex justify-content-between ">
         <div>
-          <img src="" >
+          <%= cl_image_tag book.photo.key, height: 300, width: 400, crop: :fill %>
         </div>
         <div class="card-content">
           <h5><%= link_to book.title, book_path(book) %></h5>
