@@ -105,3 +105,16 @@
   grid-template-rows: auto;
   gap: 24px;
  }
+
+.card-offers {
+  overflow: hidden;
+  background: #F8F8F2;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  flex-direction: column;
+  padding: 16px;
+  justify-content: space-between;
+  margin-top: 32PX;
+}
