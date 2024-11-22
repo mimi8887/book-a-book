@@ -13,4 +13,50 @@
 
 a {
   text-decoration: none;
+  color: #E0A85E;
 }
+
+h1 {
+  font-size: 56px;
+}
+
+h2 {
+  font-size: 48px;
+}
+
+h3 {
+  font-size: 40px;
+}
+
+h4 {
+  font-size: 32px;
+  color: #E07A5F;
+  font-weight: bold;
+}
+
+h5 {
+  font-size: 24px;
+  color: #E0A85E;
+}
+
+h6 {
+  font-size: 20px;
+  color: #E0A85E;
+}
+
+p {
+  color: #1C1C1C;
+  size: 16px;
+}
+
+.page-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
+
+
+.content-container {
+  margin: 24px;
+}
+
