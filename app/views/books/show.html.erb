@@ -23,7 +23,7 @@
       <h5><strong>Description:</strong> </h5>
       <p><%= @book.description %></p>
       <p><strong>Author:</strong> <%= @book.author %></p>
-      <p><strong>Conditions:</strong> Good</p>
+      <p><strong>Conditions: </strong><%= @book.condition %></p>
     </div>
   </div>
 
@@ -32,7 +32,7 @@
       <div class="reviews">
         <% @book.reviews.each do |review|%>
         <div class="card-review d-flex">
-            <%= review.content %>
+           <p> <%= review.content %> </p>
             <div>
 
               <%= cl_image_tag review.user.photo.key, class: "avatar", crop: :fill %>
@@ -43,7 +43,6 @@
         <% end %>
       </div>
   </div>
+  <h4><%= link_to  "Add a review to the book", new_book_review_path(@book), class: "btn btn-ghost" %>
 
 </div>
-
-<h4><%= link_to  "Add a review to the book", new_book_review_path(@book) %>
