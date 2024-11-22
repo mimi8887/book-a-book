@@ -3,9 +3,13 @@
   <h4>Welcome!</h4>
   <div class="cards_container">
     <% @books.each do |book| %>
-      <div class="card-product d-flex justify-content-between ">
+      <div class="card-product d-flex justify-content-between">
         <div>
-          <%= cl_image_tag book.photo.key, height: 300, width: 400, crop: :fill %>
+          <% if book.photo.attached? %>
+            <%= cl_image_tag book.photo.key, height: 300, width: 400, crop: :fill %>
+          <% else %>
+            <%= image_tag "book1.png", height: 300, width: 400, crop: :fill %>
+          <% end %>
         </div>
         <div class="card-content">
           <h5><%= link_to book.title, book_path(book) %></h5>

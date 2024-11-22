@@ -31,12 +31,15 @@
       <h6>Reviews:</h6>
       <div class="reviews">
         <% @book.reviews.each do |review|%>
-        <div class="card-review d-flex">
+        <div class="card-review d-flex justify-content-between">
            <p> <%= review.content %> </p>
-            <div>
-
-              <%= cl_image_tag review.user.photo.key, class: "avatar", crop: :fill %>
-              <%= link_to  review.user.first_name, dashboard_path, data: {turbo_method: :get} %>
+            <div class="d-flex align-items-center">
+              <% if review.user.photo.attached? %>
+                <%= cl_image_tag review.user.photo.key, class: "avatar", crop: :fill %>
+              <% else %>
+                <%= image_tag "1604107680888.jpeg",  class: "avatar" %>
+              <% end %>
+              <p class="mb-0 ms-2"><%= link_to  review.user.first_name, dashboard_path, data: {turbo_method: :get} %></p>
             </div>
           </div>
         </>
