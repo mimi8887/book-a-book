@@ -1,6 +1,7 @@
 <div class="container">
 <div class="row justify-content-center">
 <div class="col-6">
+<p><%= link_to "Back to Book Details", book_path(@book) %></p>
 <h4>Book <%= @book.title %></h4>
  <%= simple_form_for [@book, @booking] do |f| %>
  <%= f.input :preferred_pickup_location, placeholder: "Enter a prefered pick up location", input_html: { class: "custom-form-input" }  %>
@@ -11,4 +12,4 @@
 </div>
 </div>
 </div>
-  <p><%= link_to "Back to Book Details", book_path(@book) %></p>
+
