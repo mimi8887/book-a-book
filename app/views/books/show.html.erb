@@ -11,11 +11,11 @@
         <%= cl_image_tag @book.photo.key, height: 300, width: 400, crop: :fill %>
       </div>
       <div class="card-product_book_content my-3">
-      <% if @book.status != "booked" %>
+        <% if @book.status != "booked" %>
         <%= link_to "Request this book", new_book_booking_path(@book), class: "btn btn-flat" %>
-      <% else %>
-        <%= link_to "Request this book", "", class: "btn btn-flat" %>
-      <% end %>
+        <% else %>
+        <%= link_to "this book is already booked", "", class: "btn btn-flat" %>
+        <% end %>
       </div>
 
     </div>
@@ -23,7 +23,8 @@
       <h5><strong>Description:</strong> </h5>
       <p><%= @book.description %></p>
       <p><strong>Author:</strong> <%= @book.author %></p>
-      <p><strong>Conditions: </strong><%= @book.condition %></p>
+      <p><strong>Condition: </strong><%= @book.condition %></p>
+      <p><strong>Status: </strong><%= @book.status %></p>
     </div>
   </div>
 

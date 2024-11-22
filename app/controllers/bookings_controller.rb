@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     if @booking.save
       redirect_to book_path(@book), notice: 'Booking created successfully!'
-      @book.update(status: "booked") 
+      @book.update(status: "booked")
     else
       render :new, status: :unprocessable_entity
     end
