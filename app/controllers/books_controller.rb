@@ -3,6 +3,9 @@ class BooksController < ApplicationController
     @books = Book.all
     @users = User.all
     @user = current_user
+    if params[:query].present?
+      @books = @books.where("title ILIKE ?", "%#{params[:query]}%")
+    end
   end
 
   def show
@@ -18,7 +21,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user = current_user
     if @book.save
-      redirect_to book_path(@book), notice: 'Booking created successfully!'
+      redirect_to book_path(@book), notice: 'Book posted successfully!'
     else
       render :new, status: :unprocessable_entity
     end

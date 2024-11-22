@@ -34,7 +34,7 @@ user_profile_picture_urls = ["https://res.cloudinary.com/dlmjemn37/image/upload/
                              "https://res.cloudinary.com/dlmjemn37/image/upload/v1732269781/ferr-studio-G2Qjx1y9aAM-unsplash_z0twnl.jpg",
                              "https://res.cloudinary.com/dlmjemn37/image/upload/v1732269781/taras-shypka-QEgHL8NN7nM-unsplash_dv1puq.jpg"]
 
-book_image_urls = [ "https://res.cloudinary.com/dlmjemn37/image/upload/v1732206543/matthew-hamilton-SHMp_d0-SZg-unsplash_u6laao.jpg",
+book_image_urls = ["https://res.cloudinary.com/dlmjemn37/image/upload/v1732206543/matthew-hamilton-SHMp_d0-SZg-unsplash_u6laao.jpg",
                     "https://res.cloudinary.com/dlmjemn37/image/upload/v1732206543/thought-catalog-B1dQCWz0U2w-unsplash_ygg84e.jpg",
                     "https://res.cloudinary.com/dlmjemn37/image/upload/v1732206542/lewis-pC_kzUrdxoY-unsplash_iixlth.jpg",
                     "https://res.cloudinary.com/dlmjemn37/image/upload/v1732268800/morgan-housel-aZ_MmSmAcjg-unsplash_rtbngj.jpg",
@@ -47,6 +47,24 @@ Book.all.each do |book|
   image_file = URI.open(book_image_urls.sample)
   book.photo.attach(io: image_file, filename: "#{book.title}.jpg", content_type: "image/jpg")
 end
+
+puts 'creating Monica'
+
+monica = User.create(first_name: "Monica", last_name: Faker::Name.last_name, email: Faker::Internet.email,
+                     password: "123456")
+book_a1 = Book.create(title: "German A1 level beginner Course", author: "VHS", description: "A1 level Public Education Courses",
+            condition: 'used', user: monica)
+book_a2 = Book.create(title: "A2: German as a foreign language", author: "VHS", description: "A2 level Public Education Courses",
+            condition: 'used', user: monica)
+
+book_cover_a1 = URI.open("https://res.cloudinary.com/dlmjemn37/image/upload/v1732283504/61F3t2i1mDL._SL1500__1_lskodk.jpg")
+book_a1.photo.attach(io: book_cover_a1, filename: "A1_german_book.jpg", content_type: "image/jpg")
+
+book_cover_a2 = URI.open("https://res.cloudinary.com/dlmjemn37/image/upload/v1732283695/611bpopcvSL._SL1024__wstj4j.jpg")
+book_a2.photo.attach(io: book_cover_a2, filename: "A2_german_book.jpg", content_type: "image/jpg")
+
+monica_profile_pic = URI.open("https://res.cloudinary.com/dlmjemn37/image/upload/v1732283906/35754037-bellucci-me9_yv96ue.jpg")
+monica.photo.attach(io: monica_profile_pic, filename: "monica_profile.jpg", content_type: "image/jpg")
 
 User.all.each do |user|
   profile_image = URI.open(user_profile_picture_urls.sample)
@@ -61,3 +79,8 @@ end
 p "created #{Book.count} Books"
 p "created #{User.count} Users"
 p "created #{Review.count} Reviews"
+if monica.save
+  p "Created Monica"
+else
+  p "Couldn't create Monica"
+end
