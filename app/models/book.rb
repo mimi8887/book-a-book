@@ -3,4 +3,5 @@ class Book < ApplicationRecord
     belongs_to :user
     has_many :reviews
     # validates :description, :title, :condition, :author, presence: true
+    has_one_attached :photo
 end
