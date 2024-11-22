@@ -5,4 +5,5 @@
      <%= f.submit class: "btn btn-flat" %>
   <% end %>
 
-<%= link_to 'Back to List', root_path%>
+
+ <p><%= link_to "Back to #{@book.title}", book_path(@book) %></p>
