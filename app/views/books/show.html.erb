@@ -1,10 +1,8 @@
-
 <div class="container">
-
   <div class="my-3">
   <%= link_to 'Back to homepage', root_path%>
   </div>
-
+  
   <h4><%= @book.title %></h4>
   <div class="book-detail">
     <div class="card-product_book">
@@ -41,3 +39,5 @@
   </div>
 
 </div>
+
+<h4><%= link_to  "Add a review to the book", new_book_review_path(@book) %>
