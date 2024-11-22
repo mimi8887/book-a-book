@@ -1,46 +1,91 @@
-<div class="Container">
+<div class="container">
   <div class="mx-5">
     <%= link_to 'Back to Homepage', root_path%>
     <% if @user == current_user %>
       <h4>My profile</h4>
-      <p><%= @user.first_name %> <%= @user.last_name %></p>
+      <div class="d-flex align-items-center">
+       <% if @user.photo.attached? %>
+            <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+          <% else %>
+            <%= image_tag "1604107680888.jpeg",  class: "avatar" %>
+          <% end %>
+      <p class="mb-0 ms-2"><%= @user.first_name %> <%= @user.last_name %></p>
+      </div>
 
-      <h2>My offers</h2>
-        <% @user.books.each do |book| %>
-        <ul>
-        <li><%= link_to book.title, book_path(book) %>
-        <p><%= book.author %></p></li>
-        <%= book.status %></li>
-        </ul>
+    <div class="container-bar my-3">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">My offers</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">My requests</button>
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+   <div class="cards_container">
+    <% @user.books.each do |book| %>
+          <div class="card-product d-flex justify-content-between">
+            <%= cl_image_tag book.photo.key, height: 300, width: 400, crop: :fill %>
+            <div class="card-content">
+              <h5><%= link_to book.title, book_path(book) %></h5>
+              <p><strong>Author:</strong> <%= book.author %></p>
+              <p><strong>Description:</strong> <%= book.description %></p>
+              <p><strong>Condition:</strong> <%= book.condition %></p>
+              <p><strong>Status: </strong><%= book.status %> </p>
+            </div>
+          </div>
         <% end %>
-
-
-      <h2>My requests</h2>
-      <% @user.bookings.each do |booking| %>
-      <ul><li><%= link_to booking.book.title, book_path(booking.book) %>
-            <p><%= booking.book.author %></p></li>
-      </ul>
+  </div>
+  </div>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+   <div class="cards_container">
+    <% @user.bookings.each do |booking| %>
+      <div class="card-product d-flex justify-content-between">
+        <%= cl_image_tag booking.book.photo.key, height: 300, width: 400, crop: :fill %>
+        <div class="card-content">
+          <h5><%= link_to booking.book.title, book_path(booking.book) %></h5>
+          <p><strong>Author:</strong> <%= booking.book.author %></p>
+          <p><strong>Description:</strong> <%= booking.book.description %></p>
+          <p><strong>Condition:</strong> <%= booking.book.condition %></p>
+          <p><strong>Status: </strong><%= booking.book.status %> </p>
+        </div>
+      </div>
       <% end %>
+    </ul>
+  </div>
+</div>
+
 
 
     <% else %>
-      <div>
+      <div class="my-3">
         <h4><%= @user.first_name %>'s profile</h4>
-        <div class="d-flex">
-          <%= render "shared/avatar" %>
-          <p><%= @user.first_name %> <%= @user.last_name %></p>
+        <div class="d-flex align-items-center">
+          <%= cl_image_tag @user.photo.key, class: "avatar", crop: :fill %>
+          <p class="mb-0 ms-2"><%= @user.first_name %> <%= @user.last_name %></p>
         </div>
       </div>
+
       <h5><%= @user.first_name %>'s offers</h5>
       <div class="cards_container">
         <% @user.books.each do |book| %>
-        <div class="card-offers card-content">
-          <h6><%= book.title %></h6>
-          <p><strong>Conditions: </strong><%= book.condition %></p>
-          <p><%= link_to "Request this book", new_book_booking_path(book), class: "btn btn-flat"  %></p>
-        </div>
+          <div class="card-product d-flex justify-content-between">
+            <%= cl_image_tag book.photo.key, height: 300, width: 400, crop: :fill %>
+            <div class="card-content">
+              <h5><%= link_to book.title, book_path(book) %></h5>
+              <p><strong>Author:</strong> <%= book.author %></p>
+              <p><strong>Description:</strong> <%= book.description %></p>
+              <p><strong>Condition:</strong> <%= book.condition %></p>
+              <p><%= link_to "Request this book", new_book_booking_path(book), class: "btn btn-flat"  %></p>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <% end %>
     <% end %>
   </div>
+</div>
+</div>
 </div>

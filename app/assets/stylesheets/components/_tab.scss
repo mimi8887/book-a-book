@@ -40,10 +40,11 @@ body {
 .tab-underlined.active {
   font-weight: normal;
   color: #E07A5F; /* Brown for active tab */
-  border-bottom: 3px solid #E07A5F; /* Underline for active tab */
+  border-bottom: 3px solid #E8E3E3; /* Underline for active tab */
 }
 
 .tab-underlined:hover {
   color: #D8431D;
   font-weight: 600;/* Hover effect color */
+  border-bottom: 3px solid #D8431D;
 }

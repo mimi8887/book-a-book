@@ -1,0 +1,35 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">My offers</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">My requests</button>
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+    <% @user.books.each do |book| %>
+          <div class="card-product d-flex justify-content-between">
+            <%= cl_image_tag book.photo.key, height: 300, width: 400, crop: :fill %>
+            <div class="card-content">
+              <h5><%= link_to book.title, book_path(book) %></h5>
+              <p><strong>Author:</strong> <%= book.author %></p>
+              <p><strong>Description:</strong> <%= book.description %></p>
+              <p><strong>Condition:</strong> <%= book.condition %></p>
+              <%= book.status %>
+            </div>
+          </div>
+        <% end %>
+  </div>
+  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+    <ul>
+      <% @user.bookings.each do |booking| %>
+        <li>
+          <%= link_to booking.book.title, book_path(booking.book) %>
+          <p><%= booking.book.author %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
