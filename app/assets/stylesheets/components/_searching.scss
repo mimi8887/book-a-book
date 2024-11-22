@@ -13,7 +13,6 @@
   top: 8px;
   bottom: 8px;
   right: 8px;
-
 }
 
 .search-form-control .form-control {
@@ -21,14 +20,13 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid #E07A5F;
   border-radius: 25px;
-  color: #F8F8F2
 }
 
 .search-form-control .form-control:focus {
   border: 2px solid #E07A5F;
   outline: none !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  color: #F8F8F2
+  // color: #F8F8F2
 }
 
 .btn-flat {
@@ -39,7 +37,8 @@
   transition: background 0.3s ease;
   // box-shadow: 3px 3px 5px #D8431D;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin-right: 12px
+  // margin-right: 12px
+  margin-bottom: 0px;
 
 }
 .btn-flat:hover {
