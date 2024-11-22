@@ -1,20 +1,45 @@
-<h1>Book Details</h1>
-  <img src=""  alt="">
-  <h2><%= @book.title %></h2>
-  <p><strong>Description:</strong> <%= @book.description %></p>
-  <p><strong>Author:</strong> <%= @book.author %></p>
-  <%= link_to 'Back to List', root_path%>
 
-  <p><%= @book.status %> <%= link_to "Request this book", new_book_booking_path(@book) if @book.status == "available" %></p>
+<div class="container">
+  <div class="my-3">
+  <%= link_to 'Back to homepage', root_path%>
+  </div>
 
+  <h4><%= @book.title %></h4>
+  <div class="book-detail">
+    <div class="card-product_book">
+      <div>
+        <%= image_tag "book1.png"%>
+      </div>
+      <div class="card-product_book_content my-3">
+        <%= link_to "Request this book", new_book_booking_path(@book), class: "btn btn-flat" %>
+      </div>
+
+    </div>
+    <div>
+      <h5><strong>Description:</strong> </h5>
+      <p><%= @book.description %></p>
+      <p><strong>Author:</strong> <%= @book.author %></p>
+      <p><strong>Conditions:</strong> Good</p>
+    </div>
+  </div>
+
+<div class="my-3">
+      <h6>Reviews:</h6>
+      <div class="reviews">
+        <% @book.reviews.each do |review|%>
+        <div class="card-review d-flex">
+            <%= review.content %>
+            <div>
+              <%= render "shared/avatar" %>
+              <%= link_to  review.user.first_name, dashboard_path, data: {turbo_method: :get} %>
+            </div>
+          </div>
+        </>
+        <% end %>
+      </div>
+  </div>
+
+</div>
 
 <h4><%= link_to  "Add a review to the book", new_book_review_path(@book) %>
 
-<h3>Reviews:</h3>
-
-<% @book.reviews.order(created_at: :desc).each do |review|%>
-<ul><li>
-  <%= review.content %>
-  <%= link_to  review.user.first_name, user_dashboard_path(review.user) %>
-</li></ul>
-<% end %>

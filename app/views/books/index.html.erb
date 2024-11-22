@@ -1,13 +1,20 @@
-<div class="m-5">
-<h1>Welcome!</h1>
-  <% @books.each do |book| %>
-    <%= cl_image_tag book.photo.key, height: 300, crop: :fill %>
-    <h2><%= link_to book.title, book_path(book) %></h2>
-    <p><strong>Author:</strong> <%= book.author %></p>
-    <p><strong>Description:</strong> <%= book.description %></p>
-    <p><%= link_to "#{book.user.first_name} #{book.user.last_name}", user_dashboard_path(book.user) %></p>
-    <p><%= link_to "Request this book", new_book_booking_path(book) %></p>
-<% end %>
+
+<div class="container">
+  <h4>Welcome!</h4>
+  <div class="cards_container">
+    <% @books.each do |book| %>
+      <div class="card-product d-flex justify-content-between ">
+        <div>
+          <img src="" >
+        </div>
+        <div class="card-content">
+          <h5><%= link_to book.title, book_path(book) %></h5>
+          <p><strong>Author:</strong> <%= book.author %></p>
+          <p><strong>Description:</strong> <%= book.description %></p>
+          <p><strong>Owner:</strong> <%= link_to "#{book.user.first_name} #{book.user.last_name}", user_dashboard_path(book.user) %></p>
+          <p><%= link_to "Request this book", new_book_booking_path(book), class: "btn btn-flat"  %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-  </div>
-  </div>
