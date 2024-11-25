@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get "style", to: "pages#style"
   get '/dashboard', to: 'pages#dashboard', as: :dashboard
   get '/users/:id/dashboard', to: 'pages#dashboard', as: :user_dashboard
-
+  get '/flats', to: 'flats#mapbox'
   resources :books, only: %i[index show create new] do
     resources :bookings, only: %i[create new]
     resources :reviews, only: %i[new create]
